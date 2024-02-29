@@ -1,16 +1,18 @@
-import Books from "./components/Books";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-function App() {
+import { Outlet } from "react-router-dom";
 
+function App() {
   return (
     <div className="App">
       <Header />
-      <Books></Books>
+      <Outlet />
       <hr />
       <Footer />
     </div>
   );
 }
+
 
 export default App;
