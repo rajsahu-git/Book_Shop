@@ -1,8 +1,16 @@
 import { useParams } from "react-router-dom";
 import { BookDetailsApi } from "../app/useApiFetch";
+// import Cart from "./Cart";
+// import UserContext from "./UserContext";
+import { useContext } from "react";
+import { Carts } from "./UserContext";
+// import { set } from "sanity";
+
 const Books_Details = () =>{
     const {id} = useParams()
     const bookDetails = BookDetailsApi(id)
+    const {setCart}= useContext(Carts)
+    
     return (
         <div className="flex">
         <div className="flex w-1/2 justify-center border border-sky-700 m-8">
@@ -24,7 +32,7 @@ const Books_Details = () =>{
                     <p className="p-2  text-clip">Description: <span className="font-light text-center text-sm">{bookDetails?.volumeInfo?.description}</span></p>
                 </div>
                 <div className="flex  h-20">
-                    <button className="m-2 hover:bg-emerald-400 border w-full border-emerald-700">Add to card</button>
+                    <button onClick={()=>{setCart(id)}} className="m-2 hover:bg-emerald-400 border w-full border-emerald-700">Add to card</button>
                 </div>
             </div>
         </div>

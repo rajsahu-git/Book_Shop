@@ -13,7 +13,6 @@ import Books from "./components/Books";
 import BooksDetails from './components/Book_Details'
 import Cart from './components/Cart';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const appRouter = createBrowserRouter([
   {

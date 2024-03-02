@@ -2,8 +2,6 @@ import { BookApi } from "../app/useApiFetch";
 import { Link } from "react-router-dom";
 
 function Books() {
-
-
   const booksData = BookApi()
   return (
     <div className="App grid grid-cols-4 p-8 m-5 ">
