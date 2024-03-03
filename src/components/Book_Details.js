@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import { BookDetailsApi } from "../app/useApiFetch";
-// import Cart from "./Cart";
-// import UserContext from "./UserContext";
-import { useContext } from "react";
-import { Carts } from "./UserContext";
-// import { set } from "sanity";
+import { addItem } from "./utils/CartSlice";
+import { useDispatch } from "react-redux";
 
 const Books_Details = () =>{
     const {id} = useParams()
+
+    const dispatch = useDispatch()
     const bookDetails = BookDetailsApi(id)
-    const {setCart}= useContext(Carts)
+    const addItems =(bookDetails)=>{
+        dispatch(addItem(bookDetails))
+    }
     
     return (
         <div className="flex">
@@ -32,7 +33,7 @@ const Books_Details = () =>{
                     <p className="p-2  text-clip">Description: <span className="font-light text-center text-sm">{bookDetails?.volumeInfo?.description}</span></p>
                 </div>
                 <div className="flex  h-20">
-                    <button onClick={()=>{setCart(id)}} className="m-2 hover:bg-emerald-400 border w-full border-emerald-700">Add to card</button>
+                    <button onClick={()=>addItems(bookDetails)} className="m-2 hover:bg-emerald-400 border w-full border-emerald-700">Add to card</button>
                 </div>
             </div>
         </div>

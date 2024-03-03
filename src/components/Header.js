@@ -1,9 +1,12 @@
 import Logo from './assets/image/Logo.png'
 import { useState } from 'react';
 import {Link} from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 const Header = () =>{
     const [searchItem, setSearchItem] = useState("")
+    const cartItems = useSelector(store =>store.cart.items)
+    
     return (
         <div className="Header flex flex-col ">
             <div className="flex mx-8 mt-4 mb-1">
@@ -15,7 +18,7 @@ const Header = () =>{
                     <button className='px-4 py-1.5 h-14  bg-slate-500 ' >Search</button>
                 </span>
                 
-                <span className='transition duration-700 ease-in-out cursor-default flex justify-center items-center w-1/5' ><Link to={"/cart"}>Cart</Link> </span>
+                <span className='transition duration-700 ease-in-out cursor-default flex justify-center items-center w-1/5' ><Link to={"/cart"}>Cart {cartItems.length} - Itmes</Link> </span>
                 <span className='w-1/5 flex justify-center items-center'>user</span>
             </div>
             <hr className='bg-red-700' />

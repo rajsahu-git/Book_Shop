@@ -1,16 +1,16 @@
-import { Carts } from "./UserContext";
-import { useContext } from "react";
-// import { BookDetailsApi } from "../app/useApiFetch";
+import { useSelector } from "react-redux";
+
+
 const Cart = () =>{
-    const {cart} = useContext(Carts)
-    console.log(cart)
-    // const arr = []
-    // const addItem = arr.push(cart)
-    // console.log(typeof(addItem))
-    // console.log(addItem)
+    const cartItems = useSelector(store => store.cart.items)    
+    console.log(cartItems)
     return(
-        <div>
-            
+        <div >
+            {cartItems.map((data)=>(
+               <h1 className="flex flex-row">
+                   {data.volumeInfo?.title}
+               </h1> 
+                ))}            
         </div>
     )
 }
