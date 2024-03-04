@@ -8,12 +8,15 @@ const cartSlice = createSlice({
     reducers:{
         addItem:(state,action)=>{
             state.items.push(action.payload)
+            console.log(action.payload)
         },
-        clearCart:(state,action)=>{
-            state.items.splice(0,state.items.length)
+        clearCart:(state)=>{
+            state.items=[]
         },
         removeItem:(state,action)=>{
-            state.items.pop()
+            const i = state.items.indexOf(action.payload)
+            state.items.splice(i,1)
+            console.log(action.payload)
         }
     }
 })

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 function Books() {
   const booksData = BookApi()
+
+
   return (
     <div className="App grid grid-cols-4 p-8 m-5 ">
       {booksData?.map((item)=>(
@@ -11,10 +13,13 @@ function Books() {
         <img src={item?.volumeInfo?.imageLinks?.thumbnail} className="w-40 p-4 " alt="" />
         <h1 className=" truncate w-32" key={item?.id}>{item?.volumeInfo?.title}</h1>
         </Link>
+        <div className="flex flex-col"> 
+
+          <button className="m-1 p-2 border border-neutral-400" ><Link to={"book_details/"+item.id}> View Detail</Link></button>
+          
+        </div>
       </div>
-        
       ))}
-      
     </div>
   );
 }
